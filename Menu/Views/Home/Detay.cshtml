@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "Detay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model List<Menu.Models.menu>
+
+<section class="food-menu-area">
+    <div class="container">
+        <div class="row justify-content-center">
+
+        </div>
+    </div>ss
+    <div class="container custom-container-2">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="food-menu-box bg_cover" style="background-image: url(assets/images/food-menu-bg.jpg);">
+                    <div class="project-menu">
+                        <ul style="text-align:center">
+
+                            <a href="/home" style="margin-top:50px;" class="btn btn-warning">Kategoriler</a>
+
+                        </ul>
+                    </div>
+                    <div class="row grid" style="position: relative; height: 2159.2px;">
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-lg-6 cat-3 cat-4 cat-2" style="position: absolute; left: 0px; top: 0px;">
+                                <div class="food-menu-item mt-30 d-block d-sm-flex align-items-center">
+                                    @if (item.resim != "")
+                                    {
+                                        <div class="food-menu-thumb">
+                                            <img src="@item.resim" alt="item" width="281" height="240">
+                                        </div>
+                                    }
+                                    <div class="food-menu-content">
+                                        <a href="#"><h4 class="title">@item.ad</h4></a>
+                                        <ul>
+                                            <li>@item.aciklama</li>
+
+                                        </ul>
+                                        <span>@item.fiyat TL</span>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Detay{
+
+    @*<script src="~/Scripts/jquery.signalR-2.4.1.js"></script>
+    <script src="~/signalr/hubs"></script>
+
+    <script>
+
+        hub = $.connection.myHub
+        $.connection.hub.start()
+            .done(function () {
+                alert("BAĞLANTI KURULDU");
+            })
+            .fail(function () {
+                alert("BAĞLANTI KURULAMADI");
+            })
+
+
+        hub.client.hello = function (numara) {
+            alert(numara);
+
+        }
+
+      
+    </script>*@
+}

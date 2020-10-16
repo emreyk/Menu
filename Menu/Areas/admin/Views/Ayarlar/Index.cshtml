@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/admin/Views/Shared/admin.cshtml";
+}
+
+@model Menu.Models.ayar
+
+    <div class="container-fluid flex-grow-1 container-p-y">
+
+        <div class="card mb-4">
+            <h6 class="card-header">Ayarlar</h6>
+            <div class="card-body">
+                <form method="post" action="/admin/ayarlar" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label class="form-label">Yazı</label>
+                        <input type="text" name="yazi" class="form-control" value="@Model.yazi">
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Wifi şifresi</label>
+                        <input type="text" name="wifi" class="form-control" value="@Model.wifi">
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Kullanıcı adı</label>
+                        <input type="text" name="kadi" class="form-control" value="@Model.kadi">
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Kullanıcı şifresi</label>
+                        <input type="text" name="sifre" class="form-control" value="@Model.sifre">
+                        <div class="clearfix"></div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Güncelle</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+

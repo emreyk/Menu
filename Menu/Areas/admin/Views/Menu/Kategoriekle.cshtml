@@ -1,0 +1,106 @@
+﻿
+@{
+    ViewBag.Title = "Kategoriekle";
+    Layout = "~/Areas/admin/Views/Shared/admin.cshtml";
+}
+
+
+
+@model  List<Menu.Models.kategori>
+
+<div class="modal fade" id="modal-report" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content" style="width:60%; margin:auto;">
+            <div class="modal-header">
+                <h5 class="modal-title">Kategori ekle</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form method="post" action="/admin/Menu/Kategoriekle" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="floating-label" for="Name">Kategori</label>
+                                <input type="text" class="form-control" name="ad">
+                            </div>
+                        </div>
+
+                        @*<div class="col-sm-6">
+                            <div class="form-group fill">
+                                <label class="floating-label" for="Icon">Resim</label>
+                                <input type="file" class="form-control" name="ResimURL">
+                            </div>
+                        </div>*@
+
+                        <div class="col-sm-12">
+                            <button type="submit" class="btn btn-primary">Kaydet</button>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid flex-grow-1 container-p-y">
+    <h4 class="font-weight-bold py-3 mb-0">Menü ekle</h4>
+    <div class="text-muted small mt-0 mb-4 d-block breadcrumb">
+
+    </div>
+    <div class="row">
+
+        <div class="col-xl-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row align-items-center m-l-0">
+                        <div class="col-sm-6">
+                        </div>
+                        <div class="col-sm-6 text-right">
+                            <button class="btn btn-success btn-sm mb-3 btn-round" data-toggle="modal" data-target="#modal-report"><i class="feather icon-plus"></i> Kategori ekle</button>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table id="report-table" class="table table-bordered table-striped mb-0">
+                            <thead>
+                                <tr>
+                                    @*<th>Resim</th>*@
+                                    <th>Adı</th>
+                                    <th>İşlemler</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        @*<td>
+                                            <img src="@item.resim" class="img-fluid img-radius wid-40" alt="">
+                                        </td>*@
+                                        <td>@item.ad</td>
+
+                                        <td width="40">
+                                            <a href="/admin/menu/kategoriduzenle/@item.id" class="btn btn-info btn-sm"><i class="feather icon-edit"></i>&nbsp;Düzenle </a>
+                                            <a href="/admin/menu/kategorisil/@item.id" class="btn btn-danger btn-sm"><i class="feather icon-trash-2"></i>&nbsp;Sil </a>
+                                            <a href="/admin/menu/ekle/@item.id" class="btn btn-primary btn-sm"><i class="feather icon-trash-2"></i>&nbsp;Menü ekle </a>
+                                        </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+

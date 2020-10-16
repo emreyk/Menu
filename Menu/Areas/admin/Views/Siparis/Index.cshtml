@@ -1,0 +1,94 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/admin/Views/Shared/admin.cshtml";
+}
+
+<div class="layout-content">
+
+    <div class="container-fluid flex-grow-1 container-p-y">
+        <h4 class="font-weight-bold py-3 mb-0">Typography</h4>
+        <div class="text-muted small mt-0 mb-4 d-block breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#"><i class="feather icon-home"></i></a></li>
+                <li class="breadcrumb-item">Basic UI</li>
+                <li class="breadcrumb-item active">Alerts</li>
+            </ol>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card d-flex w-100 mb-4">
+
+
+                    <div class="d-flex col-md-12 align-items-center">
+                        <div class="card-body" id="card-body">
+
+                            @*<div class="alert alert-warning alert-dismissible fade show" >
+                                You should check in on some of those fields below.
+                                <button type="button" class="close" data-dismiss="alert" >
+                                  
+                                </button>
+                            </div>*@
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<nav class="layout-footer footer footer-light">
+    <div class="container-fluid d-flex flex-wrap justify-content-between text-center container-p-x pb-3">
+        <div class="pt-3">
+            <span class="float-md-right d-none d-lg-block">© Exclusive on Themeforest | Hand-crafted &amp; Made with <i class="fas fa-heart text-danger mr-2"></i></span>
+        </div>
+        <div>
+            <a href="javascript:" class="footer-link pt-3">About Us</a>
+            <a href="javascript:" class="footer-link pt-3 ml-4">Help</a>
+            <a href="javascript:" class="footer-link pt-3 ml-4">Contact</a>
+            <a href="javascript:" class="footer-link pt-3 ml-4">Terms &amp; Conditions</a>
+        </div>
+    </div>
+</nav>
+
+@section Panel{
+
+    <script src="~/Scripts/jquery.signalR-2.4.1.js"></script>
+    <script src="~/signalr/hubs"></script>
+
+    <script>
+
+        hub = $.connection.myHub
+        $.connection.hub.start();
+         
+
+
+        hub.client.hello = function (numara) {
+            var divSiparis = document.createElement('div');
+            divSiparis.innerHTML = "" + numara+" numaralı masa görevli bekliyor";
+            divSiparis.className = "alert alert-success alert-dismissible fade show uyari";
+           
+            document.querySelector('.card-body').appendChild(divSiparis);
+
+
+            var kapatButton = document.createElement('button');
+            kapatButton.innerHTML = "x";
+            kapatButton.setAttribute("data-dismiss", "alert");
+            kapatButton.type = "button";
+            kapatButton.className = "close";
+
+            var test = document.querySelectorAll('.uyari');
+            
+            document.querySelector('.uyari:last-child').appendChild(kapatButton);
+
+        
+
+        }
+
+
+    </script>
+}
+
+

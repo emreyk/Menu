@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model List<Menu.Models.kategori>
+
+<section class="category-area">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="section-title text-center">
+
+                    <h4 class="title">FUEM BİLİŞİM</h4>
+                    <button style="margin-top:50px;" id="cagir" class="btn btn-warning">Görevli çağır</button>
+                </div>
+            </div>
+        </div>
+      
+        <div class="row justify-content-center">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4 col-md-7 col-sm-9">
+                    <div class="category-item mt-30">
+                        <div class="category-thumb">
+
+
+                        </div>
+                        <div class="category-content text-center">
+                            <a href="/home/detay/@item.id">@item.ad</a>
+                        </div>
+                    </div>
+                </div>
+            }
+            <a href="/home/yorumyap" style="margin-top:50px;" class="btn btn-warning">Yorum yap</a><br />
+
+        </div>
+
+    </div>
+</section>
+
+@section Index{
+
+    <script src="~/Scripts/jquery.signalR-2.4.1.js"></script>
+    <script src="signalr/hubs"></script>
+
+    <script>
+
+        hub = $.connection.myHub
+        $.connection.hub.start();
+         
+
+        //hub.client.hello = function (numara) {
+        //    alert(numara);
+
+        //}
+
+        $("#cagir").click(function () {
+            var numara = prompt("masa numarasını giriniz");
+            //var metin = $("#metin").val();
+            alert(numara);
+
+            if (numara != "" && numara != null) {
+                hub.server.hello(numara);
+                alert("Görevli birazdan gelecektir");
+            }
+            if (numara == "") {
+                alert("Görevli çagırmak için masa numaranızı giriniz");
+            }
+        })
+    </script>
+}

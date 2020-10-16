@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/admin/Views/Shared/admin.cshtml";
+}
+
+<div class="container-fluid flex-grow-1 container-p-y">
+
+    <div class="card mb-4">
+        <h6 class="card-header">QR Code oluştur</h6>
+        <div class="card-body">
+            <form method="post" action="/admin/Qr">
+                <div class="form-group">
+                    <label class="form-label">Site adı</label>
+                    <input type="text" name="qrcode" class="form-control">
+                    <div class="clearfix"></div>
+                </div>
+
+                @if (ViewBag.QRCodeImage != null)
+                {
+                    <img src="@ViewBag.QRCodeImage" alt="" style="height:150px;width:150px" />
+                }
+
+                else
+                {
+                    <button type="submit" class="btn btn-primary">Oluştur</button>
+                }
+            </form>
+        </div>
+    </div>
+
+</div>
+
