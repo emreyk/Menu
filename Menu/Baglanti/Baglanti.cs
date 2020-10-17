@@ -13,10 +13,7 @@ namespace Menu.Baglanti
         private const string sifre = "";
 
 
-        //private const string adres = "localhost";
-        //private const string veritabani = "u9544174_menu";
-        //private const string kullanici = "u9544174_menu";
-        //private const string sifre = "RAkr55K4YTfg89I";
+      
 
         public const string BaglantiCumlesi = "Server=" + adres + ";" +
                                                           "Database=" + veritabani + ";" +
